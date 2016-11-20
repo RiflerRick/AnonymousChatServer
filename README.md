@@ -1,7 +1,8 @@
 # StockholmHotline :telephone_receiver: :phone:
 
 Stockholm Hotline is an simple Socket based implementation of a [unintentional bug in 
-Sweden telecommunication network](#reference), purpose of this repo. is to learn Socket Programming
+Sweden telecommunication network](#reference)
+Purpose of this repo is to learn Socket Programming
 
 - Pull Request is welcomed for other languages or improvements 
 
