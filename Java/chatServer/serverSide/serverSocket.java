@@ -9,16 +9,18 @@ class serverSocket
 
     /*one important idea is that multiple clients can be handled only when you have
     2 threads for 2 clients. A single thread cannot handle 2 clients.
-
-
+    Another important idea is that when we use reading and writing for 2 clients then we essentially would also need 2 threads one for reading and one for writing.
     */
-
     static final int port=1337;
 
     public static void main(String args[])throws IOException
     {
+        /*
+        The ServerSocket class is used for creating a socket for the server.
+        */
 
         ServerSocket serverSoc=new ServerSocket(port); //here the port number to be listening is given
+        
         Socket client1=null;
         Socket client2=null;
 
