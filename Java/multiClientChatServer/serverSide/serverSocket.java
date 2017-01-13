@@ -36,6 +36,7 @@ class serverSocket
         //it should be allowed to join and each such time we are gonna call the accept() function.
         int i;
         System.out.println("intialized server, running at port 1337");
+        
         while(numClients<100)
         {
             
@@ -50,17 +51,19 @@ class serverSocket
                 /*
                 accept function will listen to connections made to this socket and will accept it if any.
                 */
+                System.out.println("numClients now:"+numClients);
+                
                 for(i=0;i<numClients;i++)
                 {
-                    threads[i].destroy();
-                    threads[i]=new ServerThread(i,clients[i], clients);
-                    threads[i].start();
-
+                    System.out.println("from server side, updated client: "+ i);
+                    System.out.println("numClients now:"+numClients);
+                    threads[i].updateThread();
                 }
 
-                threads[numClients]=new ServerThread(numClients,clients[numClients], clients);
+                threads[numClients]=new ServerThread(numClients+1,numClients,clients[numClients], clients);
                 threads[numClients].start();//starts running the thread
                 numClients++;
+                //System.out.println("numClients at end of loop:");
                 
                 
             }

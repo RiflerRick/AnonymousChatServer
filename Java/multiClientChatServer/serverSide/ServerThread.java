@@ -10,10 +10,14 @@ class ServerThread extends Thread
     Socket clientSoc;
     Socket otherClients[];
     String message;
-    
+    int totalClients;
 
-    ServerThread(int clientNum,Socket clientSoc, Socket otherClients[])
+    OutputStream out[]=new OutputStream[100];
+    DataOutputStream dataOut[]=new DataOutputStream[100];
+
+    ServerThread(int totalClients,int clientNum,Socket clientSoc, Socket otherClients[])
     {
+        this.totalClients=totalClients;
         this.clientNum=clientNum;
         this.clientSoc=clientSoc;
         this.otherClients=otherClients;
@@ -34,32 +38,36 @@ class ServerThread extends Thread
             
             DataInputStream dataIn;
 
-            OutputStream out[]=new OutputStream[100];
-            DataOutputStream dataOut[]=new DataOutputStream[100];
+           
 
             InputStream in=clientSoc.getInputStream();
             dataIn=new DataInputStream(in);
 
+
+
             //there will be only one input stream but many output streams
-            serverSocket obj=new serverSocket();
+            
             int i;
-            for(i=0;i<100;i++)
+
+
+            for(i=0;i<this.totalClients;i++)
             {
                 if(i!=clientNum)
                 {
+                    
                     out[i]=otherClients[i].getOutputStream();
                     dataOut[i]=new DataOutputStream(out[i]);
+                    //creating dataOutStream for previous clients already added.
                 }
-                
             }
 
-            //setup complete
             while(true)
             {
+                
                 //whenever this client sends a message it has to be received by all other clients
                 message=dataIn.readUTF();
                 System.out.println("message from some client:"+message);
-                for(i=0;i<100;i++)
+                for(i=0;i<this.totalClients;i++)
                 {
                     if(i!=clientNum)
                     {
@@ -79,6 +87,23 @@ class ServerThread extends Thread
     }
     public void updateThread()
     {
+        System.out.println("totalClients: "+this.totalClients+"  for thread:"+this.clientNum);
+        try{
+            /*for(int i=this.totalClients;i<totalC;i++)
+            {
+                System.out.println("made outputStream for:i"+i);
+                   
+            }*/
+            out[this.totalClients]=otherClients[this.totalClients].getOutputStream();
+            dataOut[this.totalClients]=new DataOutputStream(out[this.totalClients]);
+            this.totalClients++;
+            //creating DataOutputStream for next client.
+        }
+        catch(Exception e)
+        {
+            System.out.println("could not update thread");
+            e.printStackTrace();
+        }
         
     }
 }

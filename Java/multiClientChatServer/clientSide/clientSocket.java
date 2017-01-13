@@ -6,7 +6,7 @@ class clientSocket
 {
     public static void main(String args[])throws IOException
     {
-        InetAddress ip=InetAddress.getByName("172.19.19.220");
+        InetAddress ip=InetAddress.getByName("localhost");
         Socket client=new Socket(ip,1337);
 
         OutputStream out=client.getOutputStream();
