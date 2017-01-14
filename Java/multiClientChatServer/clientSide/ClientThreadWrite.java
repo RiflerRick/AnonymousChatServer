@@ -21,9 +21,10 @@ class ClientThreadWrite extends Thread
         String message;
         Scanner sc=new Scanner(System.in);
         try{
+            
             while(true)
             {
-                System.out.print("You:");
+                
                 message=sc.nextLine();
                 datOut.writeUTF(message);
             }

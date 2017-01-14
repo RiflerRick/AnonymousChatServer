@@ -6,7 +6,9 @@ class clientSocket
 {
     public static void main(String args[])throws IOException
     {
-        InetAddress ip=InetAddress.getByName("localhost");
+        //any ip address can be used here.
+        //InetAddress ip=InetAddress.getByName("14.139.242.195");
+        InetAddress ip=InetAddress.getByName("27.63.157.131");
         Socket client=new Socket(ip,1337);
 
         OutputStream out=client.getOutputStream();
@@ -17,7 +19,7 @@ class clientSocket
 
         Scanner sc=new Scanner(System.in);
         String message;
-        System.out.println("Welcome to Rick's Chat server: write 'stop' to close the connection");
+        System.out.println("Welcome to Rick's Chat server: start chatting");
         
         ClientThreadRead threadRead=new ClientThreadRead(dataIn);
         ClientThreadWrite threadWrite=new ClientThreadWrite(dataOut);

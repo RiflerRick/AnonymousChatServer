@@ -23,7 +23,8 @@ class ClientThreadRead extends Thread
             {
                 message=datIn.readUTF();
                 //currently we are not dealing with closing the connection
-                System.out.println("Friend: "+message);
+                System.out.println("\n");
+                System.out.println("Friend/s: "+message);
                 
             
             }
