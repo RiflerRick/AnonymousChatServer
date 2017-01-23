@@ -7,8 +7,8 @@ class clientSocket
     public static void main(String args[])throws IOException
     {
         //any ip address can be used here.
-        //InetAddress ip=InetAddress.getByName("14.139.242.195");
-        InetAddress ip=InetAddress.getByName("localhost");
+        InetAddress ip=InetAddress.getByName("172.19.17.78");
+        //InetAddress ip=InetAddress.getByName(ip);
         Socket client=new Socket(ip,1337);
 
         OutputStream out=client.getOutputStream();
