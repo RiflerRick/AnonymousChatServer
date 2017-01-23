@@ -13,6 +13,10 @@ Purpose of this repo is to learn Socket Programming
 
 ----------------------
 
+## Using the service
+- So all you have to do is to clone the repo in a directory and run clientSocket file of anonymousChatServer using the following command:
+    `java clientSocket` and you are off to go, you can chat anonymously.
+
 ## Reference
 
 [Reference for name Stockholm Hotline](https://www.youtube.com/watch?v=zFO1cRr5-qY&t=122)
