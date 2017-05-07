@@ -1,4 +1,4 @@
-# AnnonymousChatServer :telephone_receiver: :phone:
+# AnonymousChatServer :telephone_receiver: :phone:
 
 Stockholm Hotline is an simple Socket based implementation of a [unintentional bug in 
 Sweden telecommunication network](#reference)
